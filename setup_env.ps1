@@ -1,4 +1,4 @@
-$env:PATH += ";$env:USERPROFILE\.aptoscli\bin"
+$env:PATH += ";$PSScriptRoot\aptos_bin"
 Write-Host "Added .aptoscli\bin to PATH"
 try {
     aptos --version

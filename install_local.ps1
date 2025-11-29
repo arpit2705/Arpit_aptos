@@ -1,12 +1,10 @@
 $ErrorActionPreference = "Stop"
 Write-Host "Fetching latest version..."
 try {
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    $response = Invoke-RestMethod -Uri "https://api.github.com/repos/aptos-labs/aptos-core/releases?per_page=100"
-    $latest = $response | Where-Object { $_.tag_name -match 'aptos-cli-v' } | Select-Object -First 1
-    $version = $latest.tag_name
-    $cleanVersion = $version -replace 'aptos-cli-v', ''
-    Write-Host "Latest version: $version"
+    # Hardcoded version to avoid API rate limits
+    $version = "aptos-cli-v7.11.1"
+    $cleanVersion = "7.11.1"
+    Write-Host "Using hardcoded version: $version"
 
     $url = "https://github.com/aptos-labs/aptos-core/releases/download/$version/aptos-cli-$cleanVersion-Windows-x86_64.zip"
     $zipPath = "aptos.zip"

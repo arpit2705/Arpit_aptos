@@ -2,10 +2,8 @@
 
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { useEffect, useState } from "react";
-import { AptosClient } from "aptos";
-import { MODULE_ADDRESS, NODE_URL } from "../../constants";
-
-const client = new AptosClient(NODE_URL);
+import { MODULE_ADDRESS } from "../../constants";
+import { aptosClient } from "@/lib/aptosClient";
 
 export default function ProfilePage() {
     const { account } = useWallet();
@@ -20,7 +18,7 @@ export default function ProfilePage() {
     const fetchProfile = async () => {
         setIsLoading(true);
         try {
-            const resource = await client.getAccountResource(
+            const resource = await aptosClient.getAccountResource(
                 account!.address,
                 `${MODULE_ADDRESS}::crowdfix::UserProfile`
             );

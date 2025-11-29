@@ -9,8 +9,9 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                primary: "#2dd4bf", // Teal-400
-                secondary: "#0f172a", // Slate-900
+                primary: "#4f46e5", // Indigo-600
+                secondary: "#f8fafc", // Slate-50
+                accent: "#10b981", // Emerald-500
             },
         },
     },

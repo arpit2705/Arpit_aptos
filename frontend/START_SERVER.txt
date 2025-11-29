@@ -1,0 +1,17 @@
+SERVER STARTED!
+
+Your Next.js development server should now be running.
+
+OPEN YOUR BROWSER:
+http://localhost:3000
+
+If port 3000 is busy, Next.js will automatically use port 3001 or 3002.
+Check your terminal window for the exact URL.
+
+TROUBLESHOOTING:
+- If the page doesn't load, check the browser console (F12)
+- If you see rate limit errors, add an API key to .env.local
+- The server terminal will show compilation errors if any
+
+To stop the server: Press Ctrl+C in the terminal
+

@@ -4,7 +4,7 @@ version = "1.0.0"
 authors = ["CrowdFix Team"]
 
 [addresses]
-crowdfix = "_"
+crowdfix = "0x4d82292afcf97166ac09317f2f5b43e4fa3dbf23d23076604071df4cb69cf008"
 
 [dependencies]
 AptosFramework = { git = "https://github.com/aptos-labs/aptos-core.git", subdir = "aptos-move/framework/aptos-framework", rev = "mainnet" }

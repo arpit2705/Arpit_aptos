@@ -8,13 +8,18 @@ export function WalletConnect() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     // If only Petra is installed/configured, we can try to connect to it directly
-    const handleConnect = () => {
-        const petra = wallets?.find((w) => w.name === "Petra");
-        if (petra) {
-            connect(petra.name);
-        } else {
-            // Fallback or show modal if multiple wallets
-            setIsModalOpen(true);
+    const handleConnect = async () => {
+        try {
+            const petra = wallets?.find((w) => w.name === "Petra");
+            if (petra) {
+                await connect(petra.name);
+            } else {
+                // Fallback or show modal if multiple wallets
+                setIsModalOpen(true);
+            }
+        } catch (error) {
+            console.error("Error connecting wallet:", error);
+            alert("Failed to connect wallet. Please make sure Petra wallet is installed.");
         }
     };
 
@@ -53,9 +58,14 @@ export function WalletConnect() {
                             {wallets?.map((wallet) => (
                                 <button
                                     key={wallet.name}
-                                    onClick={() => {
-                                        connect(wallet.name);
-                                        setIsModalOpen(false);
+                                    onClick={async () => {
+                                        try {
+                                            await connect(wallet.name);
+                                            setIsModalOpen(false);
+                                        } catch (error) {
+                                            console.error("Error connecting wallet:", error);
+                                            alert("Failed to connect wallet. Please try again.");
+                                        }
                                     }}
                                     className="w-full text-left px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors flex items-center justify-between"
                                 >
